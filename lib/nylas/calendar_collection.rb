@@ -8,11 +8,13 @@ module Nylas
                      interval:,
                      start_time:,
                      end_time:,
-                     emails:,
+                     emails: [],
                      buffer: nil,
                      round_robin: nil,
                      free_busy: [],
-                     open_hours: [])
+                     open_hours: [],
+                     calendars: []
+                    )
       validate_open_hours(emails, free_busy, open_hours) unless open_hours.empty?
 
       execute_availability("/calendars/availability",
@@ -24,7 +26,9 @@ module Nylas
                            buffer: buffer,
                            round_robin: round_robin,
                            free_busy: free_busy,
-                           open_hours: open_hours)
+                           open_hours: open_hours,
+                           calendars: calendars
+                          )
     end
 
     def consecutive_availability(duration_minutes:,
