@@ -88,7 +88,7 @@ the free busy email list."
     def map_open_hours_emails(open_hours)
       open_hours_emails = []
       open_hours.map do |oh|
-        open_hours_emails += oh.emails
+        open_hours_emails += oh[:emails]
       end
       open_hours_emails
     end
